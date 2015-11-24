@@ -10,7 +10,7 @@ Dibuat oleh:
 - /bin: File executable
 
 ## Petunjuk Penggunaan
-1. Jalankan program: buka folder bin dan ketikkan perintah `java -jar twitter.jar`
+1. Jalankan program: buka folder bin dan ketikkan perintah `java -jar MongoTwitter.jar`
 2. Lakukan registrasi atau login
 3. Twitter siap digunkan. Gunakan perintah yang ditampilkan layar untuk menggunakan Mongo Twitter.
 

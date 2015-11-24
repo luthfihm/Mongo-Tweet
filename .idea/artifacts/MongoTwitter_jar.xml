@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MongoTwitter:jar">
+    <output-path>$PROJECT_DIR$/bin</output-path>
+    <root id="archive" name="MongoTwitter.jar">
+      <element id="module-output" name="Mongo Twitter" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mongo-java-driver-3.1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
