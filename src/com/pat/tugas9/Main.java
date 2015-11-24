@@ -45,7 +45,7 @@ public class Main {
         }
 
         //Show welcome message to user
-        System.out.println("Welcome to Cassandra Tweeets");
+        System.out.println("Welcome to Mongo Tweeets");
         System.out.println("Command list:");
         System.out.println("/follow <username>: follow a user");
         System.out.println("/tweet <tweet>: post a tweet");
