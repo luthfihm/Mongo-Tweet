@@ -96,28 +96,28 @@ public class MongoTweet {
         Timestamp time = new Timestamp(Calendar.getInstance().getTime().getTime());
         tweetsCollections.insertOne(tweet.toBSON());
         Document userlineBSON = new Document("username",tweet.getUsername())
-                .append("time",time)
-                .append("tweet_id",tweet.getTweet_id());
+                .append("time",time.toString())
+                .append("tweet_id",tweet.getTweet_id().toString());
         Document timelineBSON = new Document("username",tweet.getUsername())
-                .append("time",time)
-                .append("tweet_id",tweet.getTweet_id());
-        userCollections.insertOne(userlineBSON);
+                .append("time",time.toString())
+                .append("tweet_id",tweet.getTweet_id().toString());
+        userlineCollections.insertOne(userlineBSON);
         timelineCollections.insertOne(timelineBSON);
         List<User> followers = this.getFollowers(tweet.getUsername());
         for (User follower : followers) {
             timelineBSON = new Document("username",follower.getUsername())
-                    .append("time",time)
-                    .append("tweet_id",tweet.getTweet_id());
+                    .append("time",time.toString())
+                    .append("tweet_id",tweet.getTweet_id().toString());
             timelineCollections.insertOne(timelineBSON);
         }
     }
 
     public Tweet getTweet(UUID tweet_id) {
         Tweet tweet = null;
-        Document tweetBSON = tweetsCollections.find(eq("tweet_id",tweet_id)).first();
+        Document tweetBSON = tweetsCollections.find(eq("tweet_id",tweet_id.toString())).first();
         if (tweetBSON != null) {
             tweet = new Tweet();
-            tweet.setTweet_id((UUID)tweetBSON.get("tweet_id"));
+            tweet.setTweet_id(UUID.fromString(tweetBSON.getString("tweet_id")));
             tweet.setUsername(tweetBSON.getString("username"));
             tweet.setBody(tweetBSON.getString("body"));
         }
@@ -128,7 +128,7 @@ public class MongoTweet {
         List<Tweet> tweets = new ArrayList<Tweet>();
         for (Document tweetBSON : tweetsCollections.find(eq("username",username))) {
             Tweet tweet = new Tweet();
-            tweet.setTweet_id((UUID)tweetBSON.get("tweet_id"));
+            tweet.setTweet_id(UUID.fromString(tweetBSON.getString("tweet_id")));
             tweet.setUsername(tweetBSON.getString("username"));
             tweet.setBody(tweetBSON.getString("body"));
             tweets.add(tweet);

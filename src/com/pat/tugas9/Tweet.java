@@ -50,7 +50,7 @@ public class Tweet {
     }
 
     public Document toBSON() {
-        return new Document("tweet_id",tweet_id)
+        return new Document("tweet_id",tweet_id.toString())
                 .append("username",username)
                 .append("body",body);
     }
